@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from .models import Product, Brand, Routine, Favorite 
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -13,7 +14,7 @@ from django.utils.decorators import method_decorator
 
 @method_decorator(login_required, name='dispatch')
 class Home(TemplateView):
-    template_name = "home.html"
+    template_name = "routines.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -91,6 +92,14 @@ class BrandDetail(DetailView):
     model = Brand
     template_name = "brand_detail.html"
 
+class BrandUpdate(UpdateView):
+    model = Brand
+    fields = ['brand', 'name', 'img', 'link']
+    template_name = 'brand_update.html'
+    success_url = '/products/'
+
+    def get_success_url(self):
+        return reverse('brand_detail', kwargs={'pk': self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class RoutineBrandAssoc(View):
