@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="detail_top">
+    <h1 class='title'>{{brand.brand}}</h1>
+    <h3 class='subtitle'>{{brand.name}}</h3>
+    <div class="card image-smaller">
+        <div class="card-image ">
+          <figure class="image is-fullwidth">
+            <img src="{{brand.img}}" alt="{{brand.name}}" />
+          </figure>
+        </div>
+        <div class="card-header">
+            <p class="card-header-title"><a href="{{brand.link}}" target='_blank'>More Details</a></p>
+        </div>
+      </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="detail_top">
+    <div class='name_aplication'>
+        <h1 class="title">{{product.name}}</h1>
+            <div class="detail__name icons">
+                {% if product.morning_application %}
+                <div class="icon-text">
+                    <span class="icon has-text-warning">
+                        <i class="fas fa-solid fa-sun"></i>
+                    </span>
+                    <span>Morning</span>
+                </div>
+                    {% endif %}
+                {% if product.evening_application %}
+                    <div class="icon-text">
+                        <span class="icon has-text-info">
+                            <i class="fas fa-solid fa-moon"></i>
+                        </span>
+                        <span>Evening</span>
+                    </div>
+                    {% endif %}
+                    </div>
+                </div>
+    <p>{{product.about}}</p>
+</div>
+    <form class="mb-5" action="{% url 'brand_create' product.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="brand"
+                    placeholder="Brand"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="name"
+                    placeholder="Product Name"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="img"
+                    placeholder="Image"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="link"
+                    placeholder="Link to Product"
+                    required
+                />
+            </div>
+            <div class="control">
+                <input class="button is-primary" type="submit" value="Add Product" />
+            </div>
+        </div>
+    </form>
+    <div class="detail__container">
+        <div class='gallery'>
+        {% for brand in product.brands.all %}
+        <a href="{% url 'brand_detail' brand.pk %}">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-fullwidth">
+                  <img src="{{brand.img}}" alt="{{brand.name}}" />
+                </figure>
+              </div>
+              <div class="card-header">
+                <p class="card-header-title">{{brand.brand}} {{brand.name}}</p>
+              </div>
+            </div>
+          </a>
+            {% empty %}
+        <article class="message">
+          <div class="message-header">
+            <p>No Products Available</p>
+          </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

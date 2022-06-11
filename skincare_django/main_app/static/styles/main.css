@@ -1,0 +1,51 @@
+
+  .container {
+    padding: 40px;
+    padding-right: 0;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .gallery .card {
+    transition: 0.1s linear;
+  }
+  
+  .gallery .card:hover {
+    transform: scale(1.1);
+    z-index: 10;
+  }
+  
+  p {
+    font-size: 12px;
+  }
+  
+  
+  .image{
+    width: 25%;
+    height: 25%;
+  }
+  
+
+  .icons {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1rem;
+  }
+
+  .name_application{
+      display:inline;
+  }
+
+  .detail_top{
+      margin-bottom: 2rem;
+  }
+
+.image-smaller {
+    width: 75%;
+    height:75%;
+}

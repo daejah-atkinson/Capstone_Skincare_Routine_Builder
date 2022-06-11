@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class='title'> Routines</h1>
+<div class="home_routines">
+    {% for routine in routines %}
+        <div class="routine mb-5">
+            <h3 class="title is-3 has-text-success">{{routine.name}}</h3>
+            <hr />
+
+            {% for brand in routine.brands.all %}
+                <div class="brand">
+                    <span><b>{{brand.brand}}</b></span>
+                    <span>{{brand.name}}</span>
+                    <span>
+                        <a href="{% url 'routine_brand_assoc' routine.pk brand.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        </a>
+                    </span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="routine mb-5">"There are no products in this routine"</div>
+    {% endfor %}
+</div>
+{% endblock %}

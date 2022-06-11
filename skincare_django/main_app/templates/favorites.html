@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class='title'> Favorites</h1>
+<hr />
+<div class="favorites">
+    {% for favorite in favorites %}
+        <div class="favorite mb-5">
+            {% for brand in favorite.brands.all %}
+                <div class="brand">
+                    <span><b>{{brand.brand}}</b></span>
+                    <span>{{brand.name}}</span>
+                    <span>{{brand}}</span>
+                    <span>
+                        <a href="{% url 'favorite_brand_assoc' favorite.pk brand.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        </a>
+                    </span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="favorite mb-5">"There are no products in your favorites"</div>
+    {% endfor %}
+</div>
+{% endblock %}
