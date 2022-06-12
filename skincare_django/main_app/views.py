@@ -86,18 +86,6 @@ class BrandCreate(View):
             context["brands"] = Brand.objects.filter(user=self.request.user)
         return context
 
-@method_decorator(login_required, name='dispatch')
-class FavoriteCreate(View):
-
-    def post(self, request, pk):
-        brand = Brand.objects.get(pk=pk)
-        Favorite.objects.create(brand=brand)
-        return redirect('favorites')
-    
-    def form_valid(self,form):
-        form.instance.user = self.request.user
-        return super(FavoriteCreate, self).form_valid(form)
-
 
 @method_decorator(login_required, name='dispatch')
 class BrandDetail(DetailView):

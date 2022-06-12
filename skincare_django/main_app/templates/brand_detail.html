@@ -13,13 +13,10 @@
     <div class='column'>
         <h1 class='title'>{{brand.brand}}</h1>
         <h3 class='subtitle'>{{brand.name}}</h3>
-        <a href="{{brand.link}}" target='_blank' class="button is-info">Buy Product</a>
+        <a href="{{brand.link}}" target='_blank' class="button is-primary">Buy Product</a>
         <br/>
         <br/>
         <a href="{% url 'brand_update' brand.pk %}" class="button is-info">Update Product</a>
-        <br/>
-        <br/>
-        <a href="{% url 'favorite_brand_assoc' 4 brand.pk %}?assoc=add" class="button is-info">Add to Favorites</a>
         <br/>
         <br/>
         <span>
@@ -50,6 +47,9 @@
               </div>
             </div>
           </span>
+          <br/>
+        <br/>
+        <a href="{% url 'favorite_brand_assoc' 4 brand.pk %}?assoc=add" class="button is-danger">Add to Favorites&nbsp;<i class="fas fa-solid fa-heart"></i></a>
     </div>
 </div>
 
