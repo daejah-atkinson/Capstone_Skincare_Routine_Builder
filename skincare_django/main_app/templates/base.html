@@ -31,11 +31,11 @@
             {% if user.is_authenticated %}
                     <div class="navbar-menu navbar-end">
                         <span class="navbar-item text-capitalize">Hi, {{user.username}}</span>
-                        <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+                        <a class="navbar-item" href="{% url 'logout' %}">Sign Out</a>
                     </div>
                 {% else %}
                 <div class="navbar-menu navbar-end">
-                    <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+                    <a class="navbar-item" href="{% url 'login' %}">Sign In</a>
                  </div>
                 {% endif %}
         </nav>

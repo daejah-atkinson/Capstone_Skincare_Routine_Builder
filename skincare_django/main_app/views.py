@@ -104,6 +104,12 @@ class BrandDetail(DetailView):
     model = Brand
     template_name = "brand_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorites"] = Favorite.objects.all()
+        context["routines"] = Routine.objects.all()
+        return context
+
 class BrandUpdate(UpdateView):
     model = Brand
     fields = ['brand', 'name', 'img', 'link']
