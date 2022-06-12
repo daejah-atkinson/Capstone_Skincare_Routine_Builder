@@ -81,3 +81,17 @@
 .text-is-black:hover {
     text-decoration: underline;
 }
+
+.card-same {
+    width: 100%;
+    height: 100%;
+}
+
+.card-header {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.card-header-title:hover{
+    text-decoration: underline;
+}

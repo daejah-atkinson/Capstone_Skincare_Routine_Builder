@@ -72,7 +72,7 @@
         <div class='gallery'>
         {% for brand in product.brands.all %}
         <a href="{% url 'brand_detail' brand.pk %}">
-            <div class="card">
+            <div class="card card-same">
               <div class="card-image">
                 <figure class="image is-fullwidth">
                   <img src="{{brand.img}}" alt="{{brand.name}}" />

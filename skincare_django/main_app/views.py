@@ -11,15 +11,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.template import RequestContext
 
 @method_decorator(login_required, name='dispatch')
 class Home(TemplateView):
     template_name = "routines.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["routines"] = Routine.objects.all()
-        return context
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -110,6 +106,10 @@ class BrandUpdate(UpdateView):
 @method_decorator(login_required, name='dispatch')
 class RoutineBrandAssoc(View):
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(FavoriteBrandAssoc, self).form_valid(form)
+
     def get(self, request, pk, brand_pk):
         assoc = request.GET.get("assoc")
         if assoc == "remove":
@@ -122,11 +122,6 @@ class RoutineBrandAssoc(View):
 @method_decorator(login_required, name='dispatch')
 class FavoriteProduct(TemplateView):
     template_name = "favorites.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["favorites"] = Favorite.objects.all()
-        return context
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -140,6 +135,10 @@ class FavoriteProduct(TemplateView):
 
 @method_decorator(login_required, name='dispatch')
 class FavoriteBrandAssoc(View):
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(FavoriteBrandAssoc, self).form_valid(form)
 
     def get(self, request, pk, brand_pk):
         assoc = request.GET.get("assoc")
