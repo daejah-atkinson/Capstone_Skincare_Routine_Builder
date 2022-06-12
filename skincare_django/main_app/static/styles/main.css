@@ -70,3 +70,14 @@
 .new-user {
     margin-left: 2.5rem;
 }
+
+.navbar-item:hover {
+    color: red;
+}
+
+.text-is-black {
+    color: black
+}
+.text-is-black:hover {
+    text-decoration: underline;
+}

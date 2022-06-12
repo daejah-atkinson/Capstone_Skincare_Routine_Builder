@@ -4,24 +4,38 @@
 <div class="home_routines">
     {% for routine in routines %}
         <div class="routine mb-5">
-            <h3 class="title is-3 has-text-success">{{routine.name}}</h3>
+            <h3 class="subtitle has-text-danger">{{routine.name}}</h3>
             <hr />
 
             {% for brand in routine.brands.all %}
-                <div class="brand">
-                    <span><b>{{brand.brand}}</b></span>
-                    <span>{{brand.name}}</span>
+            <div class='columns'>
+            <div class="card-image column">
+                <figure class="image is-128x128">
+                    <a href="{% url 'brand_detail' brand.pk %}" >
+                        <img src="{{brand.img}}" alt="{{brand.name}}" />
+                    </a>
+                </figure>
+              </div>
+                <div class="brand column is-half">
+                    <a href="{% url 'brand_detail' brand.pk %}" class='text-is-black'>
+                        <span><b>{{brand.brand}}</b></span>
+                        <span>{{brand.name}}</span>
+                    </a>
+                </div>
+                <div class='column'>
                     <span>
-                        <a href="{% url 'routine_brand_assoc' routine.pk brand.pk %}?assoc=remove" class="button is-danger is-outlined">
-                        <span class="icon is-small">
-                            <i class="fas fa-times"></i>
-                        </span>
+                        <a href="{% url 'routine_brand_assoc' routine.pk brand.pk %}?assoc=remove">
+                        <span class="icon is-small has-text-danger">
+                            <i class="fas fa-solid fa-ban"></i>
+                       
                         </a>
                     </span>
                 </div>
-
+            </div>
             {% endfor %}
         </div>
+        <br/>
+        <br/>
     {% empty %} 
         <div class="routine mb-5">"There are no products in this routine"</div>
     {% endfor %}
