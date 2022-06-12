@@ -1,10 +1,41 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="title">Sign Up</h1>
-<form method="post" action="{% url 'signup' %}">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="btn" value="Sign Up" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<div class='register-container'>
+    <div class='container top'>
+    <h1 class="title">Sign Up</h1>
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %} 
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                    <span> {{form.username}}</span>
+                </div>
+                <p class="help">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+              </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <span> {{form.password1}}</span>
+                </div>
+                <p class="help">Your password can`t be too similar to your other personal information.</p>
+                <p class="help">Your password must contain at least 8 characters.</p>
+                <p class="help">Your password can`t be a commonly used password.</p>
+                <p class="help">Your password can`t be entirely numeric.
+                </p>
+              </div>
+            <div class="field">
+                <label class="label">Password Confirmation</label>
+                <div class="control">
+                    <span> {{form.password2}}</span>
+                </div>
+                <p class="help">Enter the same password as before, for verification.</p>
+              </div>
+            <div class='register-button'>
+            <input type="submit" class="btn button is-black is-rounded" value="Sign Up" />
+            <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

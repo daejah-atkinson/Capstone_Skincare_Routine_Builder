@@ -49,3 +49,24 @@
     width: 75%;
     height:75%;
 }
+
+.title-font {
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.text-capitalize{
+    text-transform: capitalize;
+}
+
+.register-button{
+    margin-top: 1rem;
+}
+
+.register-container {
+    margin: -2rem auto 0 auto;
+}
+
+.new-user {
+    margin-left: 2.5rem;
+}

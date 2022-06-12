@@ -1,10 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="title">Log In</h1>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="btn" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<div class='register-container'>
+    <div class='container top'>
+    <h1 class="title">Sign In</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %} 
+            <span>Username: </span>
+            <br/>
+            <span> {{form.username}}</span>
+            <br/>
+            <br/>
+            <span>Password: </span>
+            <br/>
+            <span>{{form.password}}</span>
+            <br/>
+            <div class='register-button'>
+            <input type="submit" class="btn button is-black is-rounded" value="Sign In" />
+            <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
+    </div>
+    <hr/>
+
+<div class='new-user'>
+    <h3 class='subtitle'> New User? <h3>
+    <a href="{% url 'signup' %}" class='button is-black is-rounded'>Sign Up</a>
+</div>
+</div>
+
+
 
 {% endblock %}

@@ -19,10 +19,66 @@
         <a href="{% url 'brand_update' brand.pk %}" class="button is-info">Update Product</a>
         <br/>
         <br/>
-        <a href="{{brand.link}}" target='_blank' class="button is-info">Add to Routine</a>
+        <span>
+            <div class="dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="button"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
+                  <span>Add to Routine</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  {% for routine in routines %}
+                  <a
+                    href="{% url 'routine_brand_assoc' routine.pk brand.pk %}?assoc=add"
+                    class="dropdown-item"
+                  >
+                    {{routine.name}}
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </span>
+          <br/>
         <br/>
-        <br/>
-        <a href="{{brand.link}}" target='_blank' class="button is-info">Add to Favorites</a>
+        <span>
+            <div class="dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="button"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
+                  <span>Add to Favorites</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  {% for favorite in favorites %}
+                  <a
+                    href="{% url 'favorite_brand_assoc' favorite.pk brand.pk %}?assoc=add"
+                    class="dropdown-item"
+                  >
+                    {{favorite.name}}
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </span>
+        
+
        
     </div>
 </div>

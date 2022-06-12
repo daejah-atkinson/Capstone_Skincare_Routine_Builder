@@ -15,27 +15,26 @@
     <body >
         <nav class="navbar is-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/products">Skincare Routine Builder</a>
+                <a class="navbar-item title-font" href="/products">Skincare Routine Builder</a>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div class="navbar-menu navbar-end">
+            <div class="navbar-menu">
                 <a class="navbar-item" href="/about">About</a>
                 <a class="navbar-item" href="/routines">Routines</a>
                 <a class="navbar-item" href="/favorites">Favorites</a>
             </div>
             {% if user.is_authenticated %}
                     <div class="navbar-menu navbar-end">
-                        <span class="navbar-item">Hi, {{user.username}}</span>
+                        <span class="navbar-item text-capitalize">Hi, {{user.username}}</span>
                         <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
                     </div>
                 {% else %}
                 <div class="navbar-menu navbar-end">
                     <a class="navbar-item" href="{% url 'login' %}">Log In</a>
-                    <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
                  </div>
                 {% endif %}
         </nav>
