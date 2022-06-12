@@ -5,15 +5,19 @@
     <h1 class="title">Sign In</h1>
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %} 
-            <span>Username: </span>
-            <br/>
-            <span> {{form.username}}</span>
-            <br/>
-            <br/>
-            <span>Password: </span>
-            <br/>
-            <span>{{form.password}}</span>
-            <br/>
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                    <span> {{form.username}}</span>
+                </div>
+
+              </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <span> {{form.password}}</span>
+                </div>
+              </div>
             <div class='register-button'>
             <input type="submit" class="btn button is-black is-rounded" value="Sign In" />
             <input type="hidden" name="next" value="{{ next }}" />

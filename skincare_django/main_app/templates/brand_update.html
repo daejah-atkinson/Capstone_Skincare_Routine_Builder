@@ -1,8 +1,33 @@
 {% extends 'base.html' %} {% block content %}
-<h1 class="pt-3">Update {{brand.brand}}</h1>
-
+<h1 class="subtitle">Update {{brand.brand}}</h1>
 <form action="" method="post">
-  {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+  {% csrf_token %} 
+  <div class="field">
+    <label class="label">Brand</label>
+    <div class="control">
+        <span> {{form.brand}}</span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Product Name</label>
+    <div class="control">
+        <span> {{form.name}}</span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Image Link</label>
+    <div class="control">
+        <span> {{form.img}}</span>
+    </div>
+  </div>
+<div class="field">
+    <label class="label">Link to Product</label>
+    <div class="control">
+        <span> {{form.link}}</span>
+    </div>
+  </div>
+  
+  <input type="submit" value="Update Product" />
 </form>
 
 {% endblock %}
