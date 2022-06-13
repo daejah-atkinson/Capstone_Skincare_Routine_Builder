@@ -1,5 +1,9 @@
 # Skincare Routine Builder
 
+## Deployed Application
+
+https://skincare-routine-builder.herokuapp.com/
+
 ### Description
 Skincare Routine Builder is an application to help users keep track of their current skincare routine. Users can add products to a product list as well as add them to their routine and favorites list.
 
@@ -19,6 +23,5 @@ Fork and clone this repository. You'll need to install both python and django fo
 ## Contribution Guidelines
 If you identify bugs, submit an issue on the Git repo. Please detail the bug in your issue. Pull requests are always welcome. If you submit a pull request please ensure that it clearly describes the problem and solution. Thanks for taking the time to contribute!
 
-## Deployed Application
-
-https://skincare-routine-builder.herokuapp.com/
+## Future Features
+In the future I would like for users to be able to add items to their favorites from the product detail page. I would also like for users to be able to share their favorites and routines with other users. 
